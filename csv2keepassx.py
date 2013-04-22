@@ -13,6 +13,7 @@ import logging
 import csv
 from datetime import datetime
 import time
+from optparse import OptionParser
 
 
 __version__ = 'alpha'
@@ -21,10 +22,14 @@ __version__ = 'alpha'
 def main():
     """The main function."""
     log = logging.getLogger('main()')
-    #log.debug('Printing hello world to screen')
-    #print "hello world!"
-    csv_name = 'example.csv'
-    xml_name = 'example.xml'
+    parser = OptionParser(version="%prog " + str(__version__))
+    parser.add_option('-i', dest='input_file', default='logins.csv', type="string",
+        help='Input CSV file. [default: %default]', metavar='FILE')
+    parser.add_option('-o', dest='output_file', default='logins.xml', type="string",
+        help='Output XML file. [default: %default]', metavar='FILE')
+    (options, args) = parser.parse_args()
+    csv_name = options.input_file
+    xml_name = options.output_file
     with open(csv_name, 'rb') as csvfile:
         csv_rows = csv.reader(csvfile)
         date_fmt = "%Y-%m-%dT%H:%M:%S"
