@@ -1,4 +1,4 @@
-CSV to KeePassX [![Project Status](http://stillmaintained.com/vrillusions/csv2keepassx.png)](http://stillmaintained.com/vrillusions/csv2keepassx)
+CSV to KeePassX
 ===============
 
 
